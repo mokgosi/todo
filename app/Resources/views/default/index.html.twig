@@ -19,14 +19,16 @@
                         {% for task in tasks %}
 
                             <div class="todo-tasklist-item todo-tasklist-item-border-green">
+                                <a href="{{ path('task_edit', {id:task.id }) }}">
                                 <img class="todo-userpic pull-left" src="{{ asset('img/avatar.png') }}" width="27px" height="27px">
-                                <div class="todo-tasklist-item-title"> {{ task.name }} </div>
+                                <div class="todo-tasklist-item-title">{{ task.name }} </div>
                                 <div class="todo-tasklist-item-text"> {{ task.description }} </div>
                                 <div class="todo-tasklist-controls pull-left">
                                     <span class="todo-tasklist-date">
                                         <i class="fa fa-calendar"></i> {% if task.dueDate %}{{ task.dueDate|date('Y-m-d') }}{% endif %} </span>
                                     <span class="todo-tasklist-badge badge badge-roundless">Urgent</span>
                                 </div>
+                                </a>
                             </div>
 
                         {% endfor %}
