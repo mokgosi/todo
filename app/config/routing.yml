@@ -6,11 +6,6 @@ app_project:
     resource: "@AppBundle/Controller/ProjectController.php"
     type:     annotation
 
-api:
-    resource: "@ApiBundle/Resources/config/routing.yml"
-    type:     rest
-    prefix:   /api
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

@@ -1,5 +1,0 @@
-google_api:
-    type: rest
-    prefix: /v1
-    resource: "ApiBundle\Controller\ResultsController"
-    name_prefix:  google_api_ #to avoid naming collision
