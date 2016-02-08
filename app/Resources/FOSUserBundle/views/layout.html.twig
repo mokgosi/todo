@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
+Version: 4.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Metronic | User Login 1</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/simple-line-icons.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/uniform.default.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="{{ asset('css/components.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{{ asset('css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <link href="{{ asset('css/login.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+    <body class=" login">
+        <div class="menu-toggler sidebar-toggler"></div>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+        <!-- BEGIN LOGO -->
+       {# <div class="logo">
+            <a href="index.html">
+                <img src="../assets/pages/img/logo-big.png" alt="" /> 
+            </a>
+        </div>#}
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+
+
+            <div>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                {% else %}
+{#                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+                {% endif %}
+            </div>
+
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        {{ message|trans({}, 'FOSUserBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+        </div>
+
+    </body>
+
+</html>

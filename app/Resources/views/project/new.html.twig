@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="portlet light ">
+        <!-- PROJECT HEAD -->
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="icon-settings font-dark"></i>
+                <span class="caption-subject bold uppercase">Add Project</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            {{ form_start(form,  {'attr': {'novalidate': 'novalidate','class':'form-horizontal'}}) }}
+            <!-- TASK HEAD -->
+            <div class="form">
+                <!-- TASK TITLE -->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control todo-taskbody-tasktitle', 'placeholder':'Project Title...'}}) }}
+                    </div>
+                </div>
+                <!-- TASK DESC -->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control todo-taskbody-taskdesc', 'placeholder':'Project Description...', 'rows':'8'}}) }}
+                    </div>
+                </div>
+                <!-- END TASK DESC -->
+                <!-- TASK DUE DATE -->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-icon">
+                            <i class="fa fa-calendar"></i>
+                            {{ form_widget(form.dueDate, {'attr': {'class': 'form-control todo-taskbody-due', 'placeholder':'Due Date...'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <!-- TASK TAGS -->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {{ form_widget(form.status, {'attr': {'class': 'form-control todo-taskbody-tags'}}) }}
+                    </div>
+                </div>
+                <!-- TASK TAGS -->
+                <div class="form-actions right todo-form-actions">
+                    {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-circle btn-sm green', 'label': 'Save Changes'} }) }}
+                    <a href="{{ path('project_index') }}" class="btn btn-circle btn-sm btn-default">Cancel</a>
+                </div>
+            </div>
+            {{form_end(form)}}
+        </div>
+    </div>
+
+{% endblock %}
+

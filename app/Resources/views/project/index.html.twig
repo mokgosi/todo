@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   
+
+
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="icon-settings font-dark"></i>
+                <span class="caption-subject bold uppercase">Projects</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group">
+                    <a href="{{ path('project_new') }}" id="sample_editable_1_new" class="btn sbold green"> Add New
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
+                <thead>
+                    <tr>
+                        <th class="all">Name</th>
+                        <th class="min-phone-l">Due Date</th>
+                        <th class="min-tablet">Status</th>
+                        <th class="none">Description</th>
+                        <th class="none">Created</th>
+                        <th class="none">Updated</th>
+                        <th class="all">Edit</th>
+                        <th class="all">Show Tasks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td>{{ project.name }}</td>
+                            <td>{% if project.dueDate %}{{ project.createdAt|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ project.status }}</td>
+                            <td>{{ project.description }}</td>
+                            <td>{% if project.createdAt %}{{ project.createdAt|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if project.updatedAt %}{{ project.updatedAt|date('Y-m-d') }}{% endif %}</td>
+                            <td><a href="{{ path('project_edit', { 'id': project.id }) }}">edit</a></td>
+                            <td><a href="{{ path('project_show', { 'id': project.id }) }}">show</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

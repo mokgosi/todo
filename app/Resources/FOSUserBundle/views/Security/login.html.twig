@@ -1,0 +1,37 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form class="login-form" action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <h3 class="form-title font-green">Sign In</h3>
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+            <span> Enter any username and password. </span>
+        </div>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <input  id="username" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="_username" value="{{ last_username }}"  /> 
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <input  id="password" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="_password" /> 
+        </div>
+        <div class="form-actions">
+            <input type="submit" class="btn green uppercase" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        </div>
+        
+        <div class="create-account">
+            <p>
+                <a href="{{ path('fos_user_registration_register') }}" id="register-btn" class="uppercase">Create an account</a>
+            </p>
+        </div>
+    </form>
+    <!-- END LOGIN FORM -->    
+{% endblock fos_user_content %}
